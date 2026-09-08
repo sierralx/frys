@@ -1,0 +1,16 @@
+javascript:(async function(){
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const buttons = Array.from(document.querySelectorAll('button')).filter(b => b.textContent.trim() === 'Clip');
+    
+    if(buttons.length === 0) {
+        alert('No se encontraron cupones disponibles para agregar en la pantalla actual.');
+        return;
+    }
+    
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].click();
+        await sleep(400); 
+    }
+    
+    alert(`¡Listo! Se agregaron ${buttons.length} cupones a tu cuenta.`);
+})();
